@@ -14,5 +14,8 @@ namespace TruckGest.Models
         public String Descripcion { get; set; }
         public float Costo { get; set; }
 
+        public Conductor conductor { get; set; }
+
+
     }
 }

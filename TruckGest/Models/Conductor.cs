@@ -15,6 +15,9 @@ namespace TruckGest.Models
         public int Telefono { get; set; }
         public String Correo { get; set; }
        
+        public Administrador administrador { get; set; }
+        public Carro carro { get; set; }
+        public List<Reportes> reportes { get; set; }
 
     }
 }
