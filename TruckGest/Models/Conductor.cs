@@ -5,19 +5,21 @@ using System.Web;
 
 namespace TruckGest.Models
 {
-    public class Conductor
+    public class Conductor : Usuario
     {
-        public int Id { get; set; }
-        public String NombreConductor { get; set; }
-        public String ApellidosConductor { get; set; }
-        public int Edad{ get; set; }
-        public String Licencia { get; set; }
-        public int Telefono { get; set; }
-        public String Correo { get; set; }
+        public int id_conductor { get; set; }
+        public string nombreConductor { get; set; }
+        public string apellidosConductor { get; set; }
+        public int edad{ get; set; }
+        public string licencia { get; set; }
+        public int telefono { get; set; }
+        public string correo { get; set; }
+
+        public int id_administrador { get; set; }
        
         public Administrador administrador { get; set; }
-        public Carro carro { get; set; }
-        public List<Reportes> reportes { get; set; }
+        public List<Carro> carros { get; set; }
+        public List<Reporte> reportes { get; set; }
 
     }
 }

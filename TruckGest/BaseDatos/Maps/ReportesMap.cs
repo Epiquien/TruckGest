@@ -7,14 +7,14 @@ using TruckGest.Models;
 
 namespace TruckGest.BaseDatos.Maps
 {
-    public class ReportesMap : EntityTypeConfiguration<Reportes>
+    public class ReportesMap : EntityTypeConfiguration<Reporte>
     {
         public ReportesMap()
         {
             ToTable("Reportes");
-            HasKey(o => o.Id);
+            HasKey(o => o.id_reportes);
 
-            HasRequired(o => o.administrador).WithMany(o => o.reportes).HasForeignKey(o => o.Id);
+            //HasRequired(o => o.conductor).WithMany(o => o.reportes).HasForeignKey(o => o.id_reportes);
         }
     }
 }

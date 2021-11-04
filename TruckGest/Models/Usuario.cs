@@ -5,11 +5,11 @@ using System.Web;
 
 namespace TruckGest.Models
 {
-    public class Usuario
+    public abstract class Usuario
     {
-        public int Id { get; set; }
-        public String UserName { get; set; }
-        public String Password { get; set; }
-        public int TypeUser { get; set; }
+        //public int Id { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        public int typeUser { get; set; }
     }
 }

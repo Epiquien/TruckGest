@@ -12,9 +12,9 @@ namespace TruckGest.BaseDatos.Maps
         public CarroMap()
         {
             ToTable("Carro");
-            HasKey(o => o.Id);
+            HasKey(o => o.id_carro);
 
-            HasRequired(o => o.conductor);
+            //HasRequired(o => o.conductor).WithMany(o => o.carros).HasForeignKey(o => o.id_conductor);
 
         }
     }

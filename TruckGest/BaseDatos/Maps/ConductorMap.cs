@@ -12,10 +12,11 @@ namespace TruckGest.BaseDatos.Maps
         public ConductorMap()
         {
             ToTable("Conductor");
-            HasKey(o => o.Id);
-            HasRequired(o => o.carro);
+            HasKey(o => o.id_conductor);
 
-            HasMany(o => o.reportes).WithRequired(o => o.conductor).HasForeignKey(o => o.Id);
+            HasMany(o => o.carros).WithRequired(o => o.conductor).HasForeignKey(o => o.id_conductor);
+            //HasRequired(o => o.administrador).WithMany(o => o.conductores).HasForeignKey(o => o.id_administrador);
+            HasMany(o => o.reportes).WithRequired(o => o.conductor).HasForeignKey(o => o.id_conductor);
         }
     }
 }

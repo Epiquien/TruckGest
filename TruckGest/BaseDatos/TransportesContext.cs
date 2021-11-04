@@ -10,19 +10,20 @@ namespace TruckGest.BaseDatos
 {
     public class TransportesContext : DbContext
     {
-        public DbSet<Administrador> _Administradores { get; set; }
-        public DbSet<Carro> _Carros { get; set; }
-        public DbSet<Conductor> _Conductores { get; set; }
-        public DbSet<Reportes> _Reportes { get; set; }
-        public DbSet<Usuario> _Usuarios { get; set; }
-
-     
+        public DbSet<Administrador> administradores { get; set; }
+        public DbSet<Carro> carros { get; set; }
+        public DbSet<Conductor> conductores { get; set; }
+        public DbSet<Reporte> reportes { get; set; }
+        //public DbSet<Usuario> _Usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Configurations.Add(new AdministradorMap());
-           // modelBuilder.Configurations.Add(new CarroMap());
+            modelBuilder.Configurations.Add(new AdministradorMap());
+            modelBuilder.Configurations.Add(new CarroMap());
+            modelBuilder.Configurations.Add(new ConductorMap());
+            modelBuilder.Configurations.Add(new ReportesMap());
+
         }
     }
 }

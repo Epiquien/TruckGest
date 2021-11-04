@@ -7,15 +7,15 @@ namespace TruckGest.Models
 {
     public class Carro
     {
-        public int Id { get; set; }
-        public String Placa { get; set; }
-        public Byte[] Soat { get; set; }
-       public String Tipo { get; set; }
-        public String Marca { get; set; }
-        public String Modelo { get; set; }
+        public int id_carro { get; set; }
+        public string placa { get; set; }
+        public byte[] soat { get; set; }
+        public string tipo { get; set; }
+        public string marca { get; set; }
+        public string modelo { get; set; }
+        public DateTime soatFechaVencimiento { get; set; }
 
-        public DateTime SoatFechaVencimiento { get; set; }
-
+        public int id_conductor {get;set;}
 
         public Conductor conductor { get; set; }
 
