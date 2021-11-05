@@ -23,7 +23,20 @@ namespace TruckGest.Controllers
 
         public ActionResult Ingreso(string username, string pass)
         {
-            return View();
+            var user = conexiondb.usuarios.Where(o => o.userName == username && o.password == pass).FirstOrDefault();
+            if (user != null)
+            {
+                switch (user.typeUser)
+                {
+                    case 1: //administrador
+                        return RedirectToAction("Index", "Administrador");
+                    case 2: //conductor
+                        return RedirectToAction("Index", "Conductor");
+                    default:
+                        break;
+                }
+            }
+            return View("errorUser");
         }
     }
 }
