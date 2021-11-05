@@ -14,7 +14,7 @@ namespace TruckGest.BaseDatos
         public DbSet<Carro> carros { get; set; }
         public DbSet<Conductor> conductores { get; set; }
         public DbSet<Reporte> reportes { get; set; }
-        //public DbSet<Usuario> _Usuarios { get; set; }
+        public DbSet<Usuario> usuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,6 +23,7 @@ namespace TruckGest.BaseDatos
             modelBuilder.Configurations.Add(new CarroMap());
             modelBuilder.Configurations.Add(new ConductorMap());
             modelBuilder.Configurations.Add(new ReportesMap());
+            modelBuilder.Configurations.Add(new UsuarioMap());
 
         }
     }

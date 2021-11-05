@@ -17,6 +17,10 @@ namespace TruckGest.BaseDatos.Maps
             HasMany(o => o.conductores)
                 .WithRequired(o => o.administrador)
                 .HasForeignKey(o=>o.id_administrador);
+
+            HasRequired(o => o.usuario).WithRequiredPrincipal(o => o.administrador);
+            //HasOptional(o => o.usuario).WithRequired(o => o.administrador);
+
         }
     }
 }

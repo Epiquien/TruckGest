@@ -5,18 +5,14 @@ using System.Web;
 
 namespace TruckGest.Models
 {
-    public class Administrador: Usuario
+    public class Administrador :Trabajador
     {
         public int id_admin { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
-        public int edad { get; set; }
-        public int telefono { get; set; }
-        public string correo { get; set; }
+        
+        public int id_usuario { get; set; }
 
         public List<Conductor> conductores { get; set; }
-
-
+        public Usuario usuario { get; set; }
 
     }
 }

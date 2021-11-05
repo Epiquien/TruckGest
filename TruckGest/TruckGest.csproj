@@ -136,18 +136,20 @@
     <Compile Include="BaseDatos\Maps\ReportesMap.cs" />
     <Compile Include="BaseDatos\Maps\UsuarioMap.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111042151454_migration_1.cs" />
-    <Compile Include="Migrations\202111042151454_migration_1.designer.cs">
-      <DependentUpon>202111042151454_migration_1.cs</DependentUpon>
+    <Compile Include="Migrations\202111050024477_migration_3.cs" />
+    <Compile Include="Migrations\202111050024477_migration_3.designer.cs">
+      <DependentUpon>202111050024477_migration_3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrador.cs" />
     <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\Conductor.cs" />
     <Compile Include="Models\Reporte.cs" />
+    <Compile Include="Models\Trabajador.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -156,6 +158,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\undraw_customer_survey_re_v9cj.svg" />
+    <Content Include="Content\Views\logInStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -173,6 +177,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Views\loginScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -187,6 +192,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\LogIn\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -205,8 +211,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111042151454_migration_1.resx">
-      <DependentUpon>202111042151454_migration_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111050024477_migration_3.resx">
+      <DependentUpon>202111050024477_migration_3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
