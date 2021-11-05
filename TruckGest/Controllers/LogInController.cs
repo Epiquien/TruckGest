@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TruckGest.BaseDatos;
+using TruckGest.Models;
 
 namespace TruckGest.Controllers
 {
@@ -22,7 +23,6 @@ namespace TruckGest.Controllers
 
         public ActionResult Ingreso(string username, string pass)
         {
-            //var user = conexiondb.
             return View();
         }
     }

@@ -7,12 +7,12 @@ namespace TruckGest.Models
 {
     public class Administrador :Trabajador
     {
-        public int id_admin { get; set; }
+        public int id_administrador { get; set; }
         
         public int id_usuario { get; set; }
 
         public List<Conductor> conductores { get; set; }
-        public Usuario usuario { get; set; }
+        //public Usuario usuario { get; set; }
 
     }
 }

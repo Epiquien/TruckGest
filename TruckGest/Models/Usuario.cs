@@ -13,7 +13,7 @@ namespace TruckGest.Models
         public int typeUser { get; set; }
         
 
-        public Administrador administrador { get; set; }
-        public Conductor conductor { get; set; }
+        // Administrador administrador { get; set; }
+        //public Conductor conductor { get; set; }
     }
 }

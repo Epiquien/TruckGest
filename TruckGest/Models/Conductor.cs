@@ -16,6 +16,6 @@ namespace TruckGest.Models
         public Administrador administrador { get; set; }
         public List<Carro> carros { get; set; }
         public List<Reporte> reportes { get; set; }
-        public Usuario usuario { get; set; }
+        //public Usuario usuario { get; set; }
     }
 }
