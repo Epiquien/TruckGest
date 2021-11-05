@@ -8,6 +8,19 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <link href="~/Content/Views/logInStyle.css" rel="stylesheet" />
+<link href="~/Content/assets/css/animate.min.css" rel="stylesheet" />
+
+<!--  Light Bootstrap Table core CSS    -->
+<link href="~/Content/assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+
+<!--  CSS for Demo Purpose, don't include it in your project     -->
+<link href="~/Content/assets/css/demo.css" rel="stylesheet" />
+
+<!--     Fonts and icons     -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<!--<link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />-->
+<link href="~/Content/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
 <div class="limiter">
     <div class="container-login100">
@@ -20,8 +33,6 @@
                 <span class="login100-form-title">
                     Member Login
                 </span>
-
-
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" name="username" placeholder="User">
                     <span class="focus-input100"></span>
@@ -37,9 +48,7 @@
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
                 </div>
-                <span class="text-danger">
-                    el usuario o contraseña son incorrectos
-                </span>
+
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
                         Login
@@ -66,5 +75,26 @@
     </div>
 </div>
 
-
 <script src="~/Scripts/Views/loginScript.js"></script>
+
+<script src="~/Content/assets/js/chartist.min.js"></script>
+<script src="~/Content/assets/js/bootstrap-notify.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<script src="~/Content/assets/js/light-bootstrap-dashboard.js"></script>
+<script src="~/Content/assets/js/demo.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        demo.initChartist();
+
+        $.notify({
+            icon: 'pe-7s-id',
+            message: "El usaurio o la contraseña son incorrectos"
+
+        }, {
+            type: 'danger',
+            timer: 4000
+        });
+
+    });
+</script>
