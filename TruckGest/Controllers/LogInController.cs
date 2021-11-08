@@ -26,6 +26,8 @@ namespace TruckGest.Controllers
             var user = conexiondb.usuarios.Where(o => o.userName == username && o.password == pass).FirstOrDefault();
             if (user != null)
             {
+                Session["idUser"] = user.id_usuario;
+                Session["TypeUser"] = user.typeUser.ToString();
                 switch (user.typeUser)
                 {
                     case 1: //administrador

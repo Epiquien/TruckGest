@@ -1,31 +1,80 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
+
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<link rel="stylesheet" type="text/css" href="~/Scripts/InicioAdmin.css" />
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<!--Menu-->
+<div class="menu">
+    @*<a class="a-1" href="https://cdpn.io/Jack_BSK/debug/PoZyePd/vWMRwRDmoKQr"><img src="https://image.flaticon.com/icons/png/512/17/17547.png" alt=""></a>*@
+    <a href="#">Lista Camiones</a>
+    <a href="#">Conductores</a>
+    <a href="/LogIn">Log in</a>
+</div>
+<!--Encabezado-->
+<div class="main-section">
+    <div class="overlay text-center">
+        <h1 class="title-3 ver-ali"> Hola,</h1>
+        <span class="text-center title-2">Empresa de transporte de carga pesada</span>
+        @*<div class="title-4 let-white">
+                <span>Web</span>
+                <span class="espace">Movil</span>
+                <span class="espace">Escritorio</span>
+            </div>*@
+        <div>
+            <span><a href="https://www.facebook.com/naraku.alegre.3" target="_blank"><i class="fab fa-facebook fa-2x"></i></a></span>
+            <span class="logos"><a href="https://www.instagram.com/naraku2656/?hl=es-la" target="_blank"><i class="fab fa-instagram fa-2x"></i></a></span>
+
+            <span class="logos"><a href="https://www.youtube.com/channel/UCiTAEiriZHlS9E1btGhDo6Q" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></span>
+        </div>
     </div>
 </div>
+<!--Acerca de mi-->
+<section class="main-a">
+    <div class="d-flex-md">
+        <div class="col-md-1">
+            <img src="https://www.fuso.com.pe/blog/wp-content/uploads/2018/08/tipos-camiones-industrias.jpg" class="foto" width="150" height="100">
+        </div>
+        <div class="col-md-2">
+            <article>
+                <h3> Información</h3>
+                Leiciendis doloribus expedita animi. Quod, laborum!
+            </article>
+        </div>
+    </div>
+</section>
+<!--Tarjetas-->
+<section class="hg-light">
+    <h3 class="title-3 text-center"> DATOS</h3>
+    <div class="d-flex-md">
+        <div class="col-md-3">
+            <div class="card">
+                <h4 class="title-4 text-center">Lista Camiones</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam distinctio, non enim possimus, suscipit cumque amet rem tenetur pariatur ipsum. Inventore ratione in, quo id quam pariatur. Quasi, modi?
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h4 class="title-4 text-center">Gastos</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam distinctio, non enim possimus, suscipit cumque amet rem tenetur pariatur ipsum. Inventore ratione in, quo id quam pariatur. Quasi, modi?
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h4 class="title-4 text-center">Conductores</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam distinctio, non enim possimus, suscipit cumque amet rem tenetur pariatur ipsum. Inventore ratione in, quo id quam pariatur. Quasi, modi?
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <h4 class="title-4 text-center">Valance Gastos</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam distinctio, non enim possimus, suscipit cumque amet rem tenetur pariatur ipsum. Inventore ratione in, quo id quam pariatur. Quasi, modi?
+            </div>
+        </div>
+    </div>
+</section>
+<!--Pie de pagina-->
+<section class="text-center main-a">
+    <i class="fas fa-copyright">Derechos reservados</i>
+</section>

@@ -142,9 +142,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Migrations\202111072256303_DBTruckGest.cs" />
     <Compile Include="Migrations\202111072256303_DBTruckGest.designer.cs">
       <DependentUpon>202111072256303_DBTruckGest.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\202111082230085_migration_5.cs" />
+    <Compile Include="Migrations\202111082230085_migration_5.designer.cs">
+      <DependentUpon>202111082230085_migration_5.cs</DependentUpon>
+>>>>>>> 62a519a4a2e77fa4a1c2ad0691a8ef69bebadcb1
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrador.cs" />
@@ -2767,6 +2773,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2.css" />
+    <Content Include="Content\img\149071.png" />
+    <Content Include="Content\img\ico.png" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\undraw_customer_survey_re_v9cj.svg" />
     <Content Include="Content\Views\LayoutConductor.css" />
     <Content Include="Content\Views\logInStyle.css" />
@@ -3546,6 +3556,9 @@
     <Content Include="Views\Conductor\Reportes.cshtml" />
     <Content Include="Views\Conductor\Camiones.cshtml" />
     <Content Include="Views\Shared\_LayoutAdministrador.cshtml" />
+    <Content Include="Views\Administrador\Camiones.cshtml" />
+    <Content Include="Views\Administrador\Conductores.cshtml" />
+    <Content Include="Views\Administrador\Reportes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3565,8 +3578,13 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\202111072256303_DBTruckGest.resx">
       <DependentUpon>202111072256303_DBTruckGest.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\202111082230085_migration_5.resx">
+      <DependentUpon>202111082230085_migration_5.cs</DependentUpon>
+>>>>>>> 62a519a4a2e77fa4a1c2ad0691a8ef69bebadcb1
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
