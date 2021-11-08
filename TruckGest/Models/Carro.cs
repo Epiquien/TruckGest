@@ -13,7 +13,9 @@ namespace TruckGest.Models
         public string tipo { get; set; }
         public string marca { get; set; }
         public string modelo { get; set; }
-        public DateTime soatFechaVencimiento { get; set; }
+        public bool operativo { get; set; }
+        public DateTime ?soatFechaVencimiento { get; set; }
+        public DateTime ?revicionTecnicaFechaVencimiento { get; set; }
 
         public int id_conductor {get;set;}
 
