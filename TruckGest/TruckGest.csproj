@@ -142,6 +142,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111072256303_DBTruckGest.cs" />
+    <Compile Include="Migrations\202111072256303_DBTruckGest.designer.cs">
+      <DependentUpon>202111072256303_DBTruckGest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrador.cs" />
     <Compile Include="Models\Carro.cs" />
     <Compile Include="Models\Conductor.cs" />
@@ -3558,6 +3563,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111072256303_DBTruckGest.resx">
+      <DependentUpon>202111072256303_DBTruckGest.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
