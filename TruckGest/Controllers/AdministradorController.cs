@@ -13,5 +13,17 @@ namespace TruckGest.Controllers
         {
             return View();
         }
+        public ActionResult Camiones()
+        {
+            return View();
+        }
+        public ActionResult Conductores()
+        {
+            return View();
+        }
+        public ActionResult Reportes()
+        {
+            return View();
+        }
     }
 }

@@ -2763,6 +2763,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap2.css" />
+    <Content Include="Content\img\ico.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\undraw_customer_survey_re_v9cj.svg" />
     <Content Include="Content\Views\LayoutConductor.css" />
@@ -3543,6 +3544,9 @@
     <Content Include="Views\Conductor\Reportes.cshtml" />
     <Content Include="Views\Conductor\Camiones.cshtml" />
     <Content Include="Views\Shared\_LayoutAdministrador.cshtml" />
+    <Content Include="Views\Administrador\Camiones.cshtml" />
+    <Content Include="Views\Administrador\Conductores.cshtml" />
+    <Content Include="Views\Administrador\Reportes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
