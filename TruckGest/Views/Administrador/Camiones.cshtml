@@ -240,7 +240,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                        <img src="~/Content/img/truck-icon.jpg" class="avatar avatar-sm me-3" alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">@car.placa - @car.tipo</h6>
@@ -336,6 +336,15 @@
                                     <option value="Combi">Combi</option>
                                     <option value="Furgoneta">Furgoneta</option>
                                     <option Valuer="Sprinter">Sprinter</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="conductor">Conductor</label>
+                                <select class="form-control" name="id_conductor" id="conductor" required>
+                                    @foreach (var c in ViewBag.listConductores)
+                                    {
+                                    <option value="@c.id_conductor">@c.nombre @c.apellidos</option>
+                                    }
                                 </select>
                             </div>
                             <!--<div class="form-group">
