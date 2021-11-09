@@ -2771,6 +2771,7 @@
     <Content Include="Content\img\149071.png" />
     <Content Include="Content\img\ico.png" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\truck-icon.jpg" />
     <Content Include="Content\img\undraw_customer_survey_re_v9cj.svg" />
     <Content Include="Content\Views\LayoutConductor.css" />
     <Content Include="Content\Views\logInStyle.css" />
