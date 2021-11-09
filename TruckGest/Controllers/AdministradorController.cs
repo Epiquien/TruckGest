@@ -22,7 +22,8 @@ namespace TruckGest.Controllers
         }
         public ActionResult Camiones()
         {
-            return View(conexionDB.carros);
+            ViewBag.listConductores = conexionDB.conductores.ToList();
+            return View(conexionDB.carros.ToList());
         }
         public ActionResult Conductores()
         {
@@ -48,7 +49,7 @@ namespace TruckGest.Controllers
                 conductor.id_administrador = admin_id;
                 conductor.id_usuario = user_id;
                 conexionDB.SaveChanges();
-                return View("Conductores");
+                return RedirectToAction("Conductores");
             }
             return RedirectToAction("Index","LogIn");
         }
@@ -65,7 +66,7 @@ namespace TruckGest.Controllers
                 car.operativo = true;
                 conexionDB.SaveChanges();
             }
-            return View("Camiones");
+            return RedirectToAction("Camiones");
         }
     }
 }
