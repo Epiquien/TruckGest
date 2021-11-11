@@ -85,7 +85,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Tables</h6>
+                <h6 class="font-weight-bolder mb-0">Bienvenido @Session["nameTrabajador"].ToString()</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -199,7 +199,7 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 justify-content-between d-flex">
-                        <h6>Tabla de todos los vehiculos registrados</h6>
+                        <h6>Vehiculos asignados</h6>
                         <!--<button class="btn bg-gradient-dark mb-0" data-toggle="modal" data-target="#addCar">
                             <i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar Carro
                         </button>-->
@@ -248,12 +248,10 @@
                                                 }
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@car.soatFechaVencimiento</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@car.soatFechaVencimiento.Day/@car.soatFechaVencimiento.Month/@car.soatFechaVencimiento.Year</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                    Editar
-                                                </a>
+                                                
                                             </td>
                                         </tr>
                                     }
@@ -274,12 +272,10 @@
                             <script>
                                 document.write(new Date().getFullYear())
                             </script>,
-                            made with <i class="fa fa-heart"></i> by
-                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                            for a better web.
+                            Transportes Edhita.
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <!--<div class="col-lg-6">
                         <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
@@ -294,7 +290,7 @@
                                 <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
                             </li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </footer>
