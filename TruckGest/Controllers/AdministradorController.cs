@@ -54,7 +54,7 @@ namespace TruckGest.Controllers
             {
                 return RedirectToAction("LogOff");
             }
-            return View();
+            return View(conexionDB.reportes.Include(o=>o.conductor).ToList());
         }
         #endregion
 
