@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    <input value="@Model.id_carro" name="id_carro" hidden />
+    <div class="form-group">
+        <label for="placa">Placa</label>
+        <input type="text" name="placa" class="form-control" id="placa" value="@Model.placa" placeholder="Placa del carro" required>
+    </div>
+    <div class="form-group">
+        <label for="tipo">tipo</label>
+        <select class="form-control" name="tipo" id="tipo" required>
+            @foreach (var i in ViewBag.carTypes)
+            {
+                if (i == Model.tipo)
+                {
+                    <option selected value="@i">@i</option>
+                }
+                else
+                {
+                    <option value="@i">@i</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="conductor">Conductor</label>
+        <select class="form-control" name="id_conductor" id="conductor" required>
+            @foreach (var c in ViewBag.listConductores)
+            {
+                if (c.id_conductor == Model.id_conductor)
+                {
+                    <option selected value="@c.id_conductor">@c.nombre @c.apellidos</option>
+
+                }
+                else
+                {
+                    <option value="@c.id_conductor">@c.nombre @c.apellidos</option>
+
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" class="form-control" id="marca" value="@Model.marca" placeholder="Marca del vehiculo">
+    </div>
+    <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <input type="text" name="modelo" class="form-control" id="modelo" value="@Model.modelo" placeholder="Modelo del vehiculo">
+    </div>
+    <div class="form-check form-switch">
+        @if (Model.operativo)
+        {
+            <input class="form-check-input checkboxswitch" type="checkbox" role="switch" id="Operativo" name="operativo" value="true" checked>
+        }
+        else
+        {
+            <input class="form-check-input checkboxswitch" type="checkbox" role="switch" id="Operativo" name="operativo" value="false">
+
+        }
+        <label class="form-check-label" for="Operativo">Operativo</label>
+    </div>
+    <div class="form-group">
+        <label for="date">Fecha vencimineto del SOAT</label>
+        <input class="form-control" type="date" id="date" name="soatFechaVencimiento" value="@ViewData["date"]" required />
+    </div>
+}
+<script src="~/Scripts/Views/modalCarroForAdmin.js"></script>

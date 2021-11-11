@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TruckGest.BaseDatos;
 using TruckGest.Models;
@@ -17,6 +15,8 @@ namespace TruckGest.Controllers
         {
             conexionDB = new TransportesContext();
         }
+
+        #region rutas principales
         [Authorize]
         public ActionResult Index()
         {
@@ -28,7 +28,7 @@ namespace TruckGest.Controllers
         public ActionResult Camiones()
         {
             ViewBag.listConductores = conexionDB.conductores.ToList();
-            return View(conexionDB.carros.Include(o=>o.conductor).ToList());
+            return View(conexionDB.carros.Include(o => o.conductor).ToList());
         }
 
         [Authorize]
@@ -36,6 +36,14 @@ namespace TruckGest.Controllers
         {
             return View(conexionDB.conductores.ToList());
         }
+        [Authorize]
+        public ActionResult Reportes()
+        {
+            return View();
+        }
+        #endregion
+
+        #region acciones
         public ActionResult addConductor(Conductor conductor, string pass)
         {
             if (Session["TypeUser"].ToString() == "1")//only admins
@@ -48,8 +56,8 @@ namespace TruckGest.Controllers
                 conexionDB.SaveChanges();
                 int id = Convert.ToInt32(Session["idUser"].ToString());
 
-                var user_id = conexionDB.usuarios.Where(o => o.userName == newUser.userName).Select(o=>o.id_usuario).First();
-                var admin_id = conexionDB.administradores.Where(o => o.id_usuario == id).Select(o=>o.id_administrador).First();
+                var user_id = conexionDB.usuarios.Where(o => o.userName == newUser.userName).Select(o => o.id_usuario).First();
+                var admin_id = conexionDB.administradores.Where(o => o.id_usuario == id).Select(o => o.id_administrador).First();
 
                 conexionDB.conductores.Add(conductor);
                 conductor.operativo = true;
@@ -58,16 +66,12 @@ namespace TruckGest.Controllers
                 conexionDB.SaveChanges();
                 return RedirectToAction("Conductores");
             }
-            return RedirectToAction("Index","LogIn");
+            return RedirectToAction("Index", "LogIn");
         }
-        [Authorize]
-        public ActionResult Reportes()
-        {
-            return View();
-        }
+
         public ActionResult addCar(Carro car)
         {
-           
+
             if (car.placa != "" && car.tipo != "")
             {
                 conexionDB.carros.Add(car);
@@ -88,17 +92,59 @@ namespace TruckGest.Controllers
             conexionDB.SaveChanges();
             return RedirectToAction("Conductores");
         }
+        public ActionResult EditVehiculo(Carro carro)
+        {
+            var carroDB = conexionDB.carros.Where(o => o.id_carro == carro.id_carro).FirstOrDefault();
+            carroDB.placa = carro.placa;
+            carroDB.tipo = carro.tipo;
+            carroDB.marca = carro.marca;
+            carroDB.modelo = carro.modelo;
+            carroDB.operativo = carro.operativo;
+            carroDB.soatFechaVencimiento = carro.soatFechaVencimiento;
+            carroDB.id_conductor = carro.id_conductor;
+            conexionDB.SaveChanges();
+            return RedirectToAction("Camiones");
+        }
+        #endregion
+
         public ActionResult EditModalConductor(string id = "0")
         {
             int idC = Convert.ToInt32(id);
             string[] licTypes = new string[] { "AII-A", "AII-B", "AIII-B", "AIII-A" };
             ViewBag.licTypes = licTypes;
-            return View(conexionDB.conductores.Where(o=>o.id_conductor == idC).FirstOrDefault());
+            return View(conexionDB.conductores.Where(o => o.id_conductor == idC).FirstOrDefault());
+        }
+        public ActionResult EditModalVehiculo(string id = "0")
+        {
+            int idC = Convert.ToInt32(id);
+            string[] carTypes = new string[] { "Camion", "Camioneta", "Combi", "Furgoneta", "Sprinter" };
+            ViewBag.carTypes = carTypes;
+            ViewBag.listConductores = conexionDB.conductores.ToList();
+            var carro = conexionDB.carros.Where(o => o.id_carro == idC).Include(o => o.conductor).FirstOrDefault();
+            string month,day;
+            if (carro.soatFechaVencimiento.Value.Month.ToString().Length == 1)
+            {
+                month = '0' + carro.soatFechaVencimiento.Value.Month.ToString();
+            }
+            else
+            {
+                month = carro.soatFechaVencimiento.Value.Month.ToString();
+            }
+            if (carro.soatFechaVencimiento.Value.Day.ToString().Length == 1)
+            {
+                day = '0' + carro.soatFechaVencimiento.Value.Day.ToString();
+            }
+            else
+            {
+                day = carro.soatFechaVencimiento.Value.Day.ToString();
+            }
+            ViewData["date"] = carro.soatFechaVencimiento.Value.Year.ToString()+'-'+month+'-'+day;
+            return View(carro);
         }
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index","LogIn");
+            return RedirectToAction("Index", "LogIn");
         }
     }
 }

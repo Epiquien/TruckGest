@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using TruckGest.BaseDatos;
-using System.Data.Entity;
-using TruckGest.Models;
 
 namespace TruckGest.Controllers
 {
