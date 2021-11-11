@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TruckGest.BaseDatos;
+using System.Data.Entity;
 using TruckGest.Models;
 
 namespace TruckGest.Controllers
@@ -25,17 +26,25 @@ namespace TruckGest.Controllers
         public ActionResult Ingreso(string username, string pass)
         {
             var user = conexiondb.usuarios.Where(o => o.userName == username && o.password == pass).FirstOrDefault();
+            
             if (user != null)
             {
+
                 Session["idUser"] = user.id_usuario;
                 Session["TypeUser"] = user.typeUser.ToString();
                 FormsAuthentication.SetAuthCookie(Session["idUser"].ToString(), false);
                 switch (user.typeUser)
                 {
                     case 1: //administrador
-                        return RedirectToAction("Index", "Administrador");
+                        
+                         return RedirectToAction("Index", "Administrador");
                     case 2: //conductor
-                        return RedirectToAction("Index", "Conductor");
+                        var conductor = conexiondb.conductores.Where(o => o.id_usuario == user.id_usuario).First();
+                        if (conductor.operativo)
+                        {
+                            return RedirectToAction("Index", "Conductor");
+                        }
+                        break;
                     default:
                         break;
                 }
