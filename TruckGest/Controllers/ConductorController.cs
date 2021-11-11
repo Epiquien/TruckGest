@@ -26,8 +26,8 @@ namespace TruckGest.Controllers
         }
         public ActionResult Camiones()
         {
-
-            return View();
+            var conductor_id = conexionDB.conductores.Where(o => o.id_usuario == Convert.ToInt32(Session["idUser"].ToString())).Select(o => o.id_conductor).First();
+            return View(conexionDB.carros.Where(o=>o.id_conductor == conductor_id).ToList());
         }
 
         public ActionResult addReporte(Reporte reporte )

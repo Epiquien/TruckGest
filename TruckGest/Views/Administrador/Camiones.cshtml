@@ -112,7 +112,7 @@
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        <a href="@Url.Action("Index","LogIn")" class="nav-link text-body font-weight-bold px-0">
+                        <a href="@Url.Action("LogOff")" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
                             <span class="d-sm-inline d-none">Log out</span>
                         </a>
@@ -249,8 +249,8 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                                <p class="text-xs font-weight-bold mb-0">@car.conductor.nombre</p>
+                                                <p class="text-xs text-secondary mb-0">@car.conductor.apellidos</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 @if (car.operativo)
@@ -263,11 +263,12 @@
                                                 }
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@car.soatFechaVencimiento</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@car.soatFechaVencimiento.Day/@car.soatFechaVencimiento.Month/@car.soatFechaVencimiento.Year</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                    Editar
+                                                <a href="javascript:;" class="text-secondary font-weight-bold btnEditModal">
+                                                    <input value="@car.id_carro" hidden />
+                                                    <i class="far fa-edit text-warning"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -344,13 +345,13 @@
                                     @foreach (var c in ViewBag.listConductores)
                                     {
                                         <option value="@c.id_conductor">@c.nombre @c.apellidos</option>
-}
+                                    }
                                 </select>
                             </div>
                             <!--<div class="form-group">
-                                <label for="soat">SOAT</label>
-                                <input type="file" name="soat" class="form-control-file" id="soat">
-                            </div>-->
+                            <label for="soat">SOAT</label>
+                            <input type="file" name="soat" class="form-control-file" id="soat">
+                        </div>-->
                             <div class="form-group">
                                 <label for="marca">Marca</label>
                                 <input type="text" name="marca" class="form-control" id="marca" placeholder="Marca del vehiculo">
@@ -373,6 +374,28 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" tabindex="-1" id="modalEditCarro" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/Administrador/EditVehiculo" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalContentUpdate">
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close" />
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
+<script src="~/Scripts/Views/VehiculoForAdmin.js"></script>

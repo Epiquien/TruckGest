@@ -13,10 +13,6 @@ namespace TruckGest.BaseDatos.Maps
         {
             ToTable("usuario");
             HasKey(o => o.id_usuario);
-
-            //HasOptional(o => o.administrador).WithOptionalDependent(o => o.usuario);
-            //HasOptional(o => o.conductor).WithOptionalDependent(o => o.usuario);
-
         }
     }
 }
