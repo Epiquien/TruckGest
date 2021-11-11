@@ -76,6 +76,25 @@ namespace TruckGest.Controllers
             }
             return RedirectToAction("Camiones");
         }
+        public ActionResult EditConductor(Conductor conductor)
+        {
+            var conductorDB = conexionDB.conductores.Where(o => o.id_conductor == conductor.id_conductor).FirstOrDefault();
+            conductorDB.nombre = conductor.nombre;
+            conductorDB.apellidos = conductor.apellidos;
+            conductorDB.edad = conductor.edad;
+            conductorDB.telefono = conductor.telefono;
+            conductorDB.operativo = conductor.operativo;
+            conductorDB.licencia = conductor.licencia;
+            conexionDB.SaveChanges();
+            return RedirectToAction("Conductores");
+        }
+        public ActionResult EditModalConductor(string id = "0")
+        {
+            int idC = Convert.ToInt32(id);
+            string[] licTypes = new string[] { "AII-A", "AII-B", "AIII-B", "AIII-A" };
+            ViewBag.licTypes = licTypes;
+            return View(conexionDB.conductores.Where(o=>o.id_conductor == idC).FirstOrDefault());
+        }
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
