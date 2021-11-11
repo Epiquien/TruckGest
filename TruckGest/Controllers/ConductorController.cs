@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using TruckGest.BaseDatos;
 
 namespace TruckGest.Controllers
@@ -24,8 +25,9 @@ namespace TruckGest.Controllers
         }
         public ActionResult Camiones()
         {
-            var conductor_id = conexionDB.conductores.Where(o => o.id_usuario == Convert.ToInt32(Session["idUser"].ToString())).Select(o => o.id_conductor).First();
-            return View(conexionDB.carros.Where(o=>o.id_conductor == conductor_id).ToList());
+            int id = Convert.ToInt32(Session["idUser"].ToString());
+            int idConductor = Convert.ToInt32(Session["idConductor"].ToString());
+            return View(conexionDB.carros.Where(o=>o.id_conductor == idConductor).Include(o=>o.conductor).ToList());
         }
     }
 }

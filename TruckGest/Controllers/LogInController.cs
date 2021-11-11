@@ -37,6 +37,7 @@ namespace TruckGest.Controllers
                         var conductor = conexiondb.conductores.Where(o => o.id_usuario == user.id_usuario).First();
                         if (conductor.operativo)
                         {
+                            Session["idConductor"] = conductor.id_conductor;
                             return RedirectToAction("Index", "Conductor");
                         }
                         break;
