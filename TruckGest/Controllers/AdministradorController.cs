@@ -20,13 +20,20 @@ namespace TruckGest.Controllers
         [Authorize]
         public ActionResult Index()
         {
-
+            if(Session["TypeUser"].ToString() != "1")
+            {
+                return RedirectToAction("LogOff");
+            }
             return View();
         }
 
         [Authorize]
         public ActionResult Camiones()
         {
+            if (Session["TypeUser"].ToString() != "1")
+            {
+                return RedirectToAction("LogOff");
+            }
             ViewBag.listConductores = conexionDB.conductores.ToList();
             return View(conexionDB.carros.Include(o => o.conductor).ToList());
         }
@@ -34,11 +41,19 @@ namespace TruckGest.Controllers
         [Authorize]
         public ActionResult Conductores()
         {
+            if (Session["TypeUser"].ToString() != "1")
+            {
+                return RedirectToAction("LogOff");
+            }
             return View(conexionDB.conductores.ToList());
         }
         [Authorize]
         public ActionResult Reportes()
         {
+            if (Session["TypeUser"].ToString() != "1")
+            {
+                return RedirectToAction("LogOff");
+            }
             return View();
         }
         #endregion
@@ -143,6 +158,7 @@ namespace TruckGest.Controllers
         }
         public ActionResult LogOff()
         {
+            Session["idUser"] = null;
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "LogIn");
         }
