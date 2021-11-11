@@ -249,8 +249,8 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                                <p class="text-xs font-weight-bold mb-0">@car.conductor.nombre</p>
+                                                <p class="text-xs text-secondary mb-0">@car.conductor.apellidos</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 @if (car.operativo)
@@ -263,7 +263,7 @@
                                                 }
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">@car.soatFechaVencimiento</span>
+                                                <span class="text-secondary text-xs font-weight-bold">@car.soatFechaVencimiento.Day/@car.soatFechaVencimiento.Month/@car.soatFechaVencimiento.Year</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

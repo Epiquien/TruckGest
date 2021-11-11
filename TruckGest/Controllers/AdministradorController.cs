@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TruckGest.BaseDatos;
 using TruckGest.Models;
+using System.Data.Entity;
 
 namespace TruckGest.Controllers
 {
@@ -23,7 +24,7 @@ namespace TruckGest.Controllers
         public ActionResult Camiones()
         {
             ViewBag.listConductores = conexionDB.conductores.ToList();
-            return View(conexionDB.carros.ToList());
+            return View(conexionDB.carros.Include(o=>o.conductor).ToList());
         }
         public ActionResult Conductores()
         {
