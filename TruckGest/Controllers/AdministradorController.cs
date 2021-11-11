@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TruckGest.BaseDatos;
 using TruckGest.Models;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace TruckGest.Controllers
 {
@@ -16,16 +17,21 @@ namespace TruckGest.Controllers
         {
             conexionDB = new TransportesContext();
         }
+        [Authorize]
         public ActionResult Index()
         {
 
             return View();
         }
+
+        [Authorize]
         public ActionResult Camiones()
         {
             ViewBag.listConductores = conexionDB.conductores.ToList();
             return View(conexionDB.carros.Include(o=>o.conductor).ToList());
         }
+
+        [Authorize]
         public ActionResult Conductores()
         {
             return View(conexionDB.conductores.ToList());
@@ -54,6 +60,7 @@ namespace TruckGest.Controllers
             }
             return RedirectToAction("Index","LogIn");
         }
+        [Authorize]
         public ActionResult Reportes()
         {
             return View();
@@ -68,6 +75,11 @@ namespace TruckGest.Controllers
                 conexionDB.SaveChanges();
             }
             return RedirectToAction("Camiones");
+        }
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index","LogIn");
         }
     }
 }

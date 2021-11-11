@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TruckGest.BaseDatos;
 using TruckGest.Models;
 
@@ -28,6 +29,7 @@ namespace TruckGest.Controllers
             {
                 Session["idUser"] = user.id_usuario;
                 Session["TypeUser"] = user.typeUser.ToString();
+                FormsAuthentication.SetAuthCookie(Session["idUser"].ToString(), false);
                 switch (user.typeUser)
                 {
                     case 1: //administrador
