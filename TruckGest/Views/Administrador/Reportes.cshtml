@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
@@ -216,7 +217,7 @@
         <div class="row">
             @foreach (var report in Model)
             {
-                <div class="col-12 col-xl-4 col-md-6">
+                <div class="col-12 col-xl-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <div class="card-header pb-0 p-3">
                             <div class="row">
@@ -291,13 +292,13 @@
                 <form action="/Administrador/reportDeleted" method="post">
                     <div class="modal-header">
                         <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                            <strong>X</strong>
                         </button>
                     </div>
                     <div class="modal-body" id="modalContentUpdate">
-                        <input name="id_reportes" value="" type="text" id="inputId" hidden/>
-                        Estas seguro que quieres eliminar el <strong id="idReport">Reporte </strong> 
+                        <input name="id_reportes" value="" type="text" id="inputId" hidden />
+                        Estas seguro que quieres eliminar el <strong id="idReport">Reporte </strong>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close" />

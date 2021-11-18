@@ -223,7 +223,7 @@
 
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
+                            <table class="table align-items-center mb-0 table-hover table-responsive-sm ">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Carro</th>
@@ -317,8 +317,8 @@
                     <form action="/Administrador/addCar" method="post">
                         <div class="modal-header">
                             <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                                <strong>X</strong>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -377,8 +377,8 @@
                     <form action="/Administrador/EditVehiculo" method="post">
                         <div class="modal-header">
                             <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                                <strong>X</strong>
                             </button>
                         </div>
                         <div class="modal-body" id="modalContentUpdate">
@@ -396,3 +396,12 @@
 </main>
 
 <script src="~/Scripts/Views/VehiculoForAdmin.js"></script>
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
