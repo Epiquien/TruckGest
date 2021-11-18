@@ -224,7 +224,8 @@
                                     <h6 class="mb-0">Reporte @report.id_reportes</h6>
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <a href="javascript:;">
+                                    <a href="javascript:;" class="btnDeleted">
+                                        <input type="text" value="@report.id_reportes" hidden />
                                         <i class="fas fa-trash-alt text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="delete"></i>
                                     </a>
                                 </div>
@@ -260,7 +261,7 @@
                     <div class="copyright text-center text-sm text-muted text-lg-start">
                         ©
                         <script>
-                                document.write(new Date().getFullYear())
+                            document.write(new Date().getFullYear())
                         </script>,
                         Transportes Edhita.
                     </div>
@@ -284,4 +285,27 @@
             </div>
         </div>
     </footer>
+    <div class="modal fade" tabindex="-1" id="confirmDelete" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/Administrador/reportDeleted" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalContentUpdate">
+                        <input name="id_reportes" value="" type="text" id="inputId" hidden/>
+                        Estas seguro que quieres eliminar el <strong id="idReport">Reporte </strong> 
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close" />
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </main>
+<script src="~/Scripts/Views/ReportForAdmin.js"></script>

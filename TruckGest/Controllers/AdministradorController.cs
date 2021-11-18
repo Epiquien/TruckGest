@@ -120,6 +120,11 @@ namespace TruckGest.Controllers
             conexionDB.SaveChanges();
             return RedirectToAction("Camiones");
         }
+        public ActionResult ReportDelete(string id)
+        {
+
+            return RedirectToAction("Reportes");
+        }
         #endregion
 
         public ActionResult EditModalConductor(string id = "0")
@@ -155,6 +160,14 @@ namespace TruckGest.Controllers
             }
             ViewData["date"] = carro.soatFechaVencimiento.Value.Year.ToString()+'-'+month+'-'+day;
             return View(carro);
+        }
+        public ActionResult reportDeleted(string id_reportes)
+        {
+            int idReport = Convert.ToInt32(id_reportes);
+            var report = conexionDB.reportes.Where(o => o.id_reportes == idReport).FirstOrDefault();
+            conexionDB.reportes.Remove(report);
+            conexionDB.SaveChanges();
+            return RedirectToAction("Reportes");
         }
         public ActionResult LogOff()
         {
