@@ -11,7 +11,7 @@ namespace TruckGest.Models
         public string userName { get; set; }
         public string password { get; set; }
         public int typeUser { get; set; }
-        
+        public byte[] imagePerfil { get; set; }
 
         // Administrador administrador { get; set; }
         //public Conductor conductor { get; set; }

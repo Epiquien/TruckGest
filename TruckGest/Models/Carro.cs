@@ -10,6 +10,7 @@ namespace TruckGest.Models
         public int id_carro { get; set; }
         public string placa { get; set; }
         public byte[] soat { get; set; }
+        public byte[] fichaTecnica { get; set; }
         public string tipo { get; set; }
         public string marca { get; set; }
         public string modelo { get; set; }
