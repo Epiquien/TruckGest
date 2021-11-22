@@ -1,4 +1,4 @@
-﻿    
+﻿
 @{
     Layout = "~/Views/Shared/_LayoutConductor.cshtml";
 }
@@ -222,50 +222,31 @@
                                     @foreach (var reporte in Model)
                                     {
 
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="~/Content/img/informe.png" class="avatar avatar-sm me-3" alt="user1">
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="~/Content/img/informe.png" class="avatar avatar-sm me-3" alt="user1">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">Reporte @reporte.id_reportes</h6>
+                                                        <p class="text-xs text-secondary mb-0">@reporte.descripcion</p>
+                                                    </div>
                                                 </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Reporte @reporte.id_reportes</h6>
-                                                    <p class="text-xs text-secondary mb-0">@reporte.descripcion</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-xs font-weight-bold mb-0">
-                                            <span class="text-secondary text-xs font-weight-bold">@reporte.dia.Day/@reporte.dia.Month/@reporte.dia.Year</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <p class="text-xs text-secondary mb-0">@reporte.dosto</p>
-                                        </td>
-
-
-
-                                        @*<td>
-            <p class="text-xs font-weight-bold mb-0">@conductor.correo</p>
-            <p class="text-xs text-secondary mb-0">@conductor.telefono</p>
-        </td>*@
-                                        @*<td class="align-middle text-center text-sm">
-            @if (conductor.operativo)
-            {
-                <span class="badge badge-sm bg-gradient-success">Operativo</span>
-            }
-            else
-            {
-                <span class="badge badge-sm bg-gradient-danger">Sin servicio</span>
-            }
-        </td>*@
-                                        @*<td class="align-middle text-center">
-            <span class="text-secondary text-xs font-weight-bold">@conductor.licencia</span>
-        </td>*@
-                                        <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
-                                            </a>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="text-xs font-weight-bold mb-0">
+                                                <span class="text-secondary text-xs font-weight-bold">@reporte.dia.Day/@reporte.dia.Month/@reporte.dia.Year</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <p class="text-xs text-secondary mb-0">@reporte.dosto</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs btnEditModal">
+                                                    <input value="@reporte.id_reportes" hidden />
+                                                    <i class="far fa-edit text-warning"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     }
 
                                 </tbody>
@@ -307,6 +288,7 @@
                 </div>
             </div>
         </footer>
+
         <div class="modal fade" tabindex="-1" id="addDriver" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -330,31 +312,27 @@
                                 <label for="apellido">Costo</label>
                                 <input type="text" name="dosto" class="form-control" id="dosto" placeholder="Costo" required>
                             </div>
-                            @*<div class="form-group">
-            <label for="edad">Edad</label>
-            <input type="number" name="edad" class="form-control" id="edad" placeholder="Edad">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close" />
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="telefono">Celular</label>
-            <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Celular">
-        </div>
-        <div class="form-group">
-            <label for="correo">Correo</label>
-            <input type="text" name="correo" class="form-control" id="correo" placeholder="Correo electronico" required>
-        </div>*@
-                            @*<div class="form-group">
-                                <label for="pass">Contraseña</label>
-                                <input type="password" name="pass" class="form-control" id="pass" placeholder="Contraseña" required>
-                            </div>*@
-                            @*<div class="form-group">
-                                <label for="licencia">licencia</label>
-                                <select class="form-control" name="licencia" id="licencia">
-                                    <option value="AII-A">AII-A</option>
-                                    <option value="AII-B">AII-B</option>
-                                    <option value="AIII-B">AIII-B</option>
-                                    <option value="AIII-A">AIII-A</option>
-                                </select>
-                            </div>*@
+        <div class="modal fade" tabindex="-1" id="modalEditReport" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/Conductor/updateReport" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                                <strong>X</strong>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalContentReport">
+
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close" />
@@ -368,3 +346,4 @@
 
 
 </main>
+<script src="~/Scripts/Views/reportForConductor.js"></script>

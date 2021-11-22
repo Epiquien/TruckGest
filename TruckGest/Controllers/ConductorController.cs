@@ -33,7 +33,8 @@ namespace TruckGest.Controllers
             {
                 return RedirectToAction("LogOff");
             }
-            return View(conexionDB.reportes.ToList());
+            int idConductor = Convert.ToInt32(Session["idConductor"].ToString());
+            return View(conexionDB.reportes.Where(o => o.id_conductor == idConductor).ToList());
         }
         [Authorize]
         public ActionResult Camiones()
@@ -46,27 +47,57 @@ namespace TruckGest.Controllers
             int idConductor = Convert.ToInt32(Session["idConductor"].ToString());
             return View(conexionDB.carros.Where(o => o.id_conductor == idConductor).Include(o => o.conductor).ToList());
         }
-
+        [Authorize]
         public ActionResult addReporte(Reporte reporte)
         {
-            if (Session["TypeUser"].ToString() == "2")
+            if (Session["TypeUser"].ToString() != "2")
             {
-
-                conexionDB.SaveChanges();
-                int id = Convert.ToInt32(Session["idUser"].ToString());
-
-                //  int id = Convert.ToInt32(Session["idUser"].ToString());
-                // var user_id = conexionDB.usuarios.Where(o => o.userName == newUser.userName).Select(o => o.id_usuario).First();
-                var conductor_id = conexionDB.conductores.Where(o => o.id_usuario == id).Select(o => o.id_conductor).First();
-
-                conexionDB.reportes.Add(reporte);
-                reporte.id_conductor = conductor_id;
-
-                conexionDB.SaveChanges();
-                return RedirectToAction("Reportes");
+                return RedirectToAction("LogOff");
             }
-            return RedirectToAction("LogOff");
+
+            int id = Convert.ToInt32(Session["idUser"].ToString());
+            var conductor_id = conexionDB.conductores.Where(o => o.id_usuario == id).Select(o => o.id_conductor).First();
+
+            conexionDB.reportes.Add(reporte);
+            reporte.id_conductor = conductor_id;
+
+            conexionDB.SaveChanges();
+            return RedirectToAction("Reportes");
         }
+        public ActionResult updateReport(Reporte report)
+        {
+            var reporte = conexionDB.reportes.Where(o => o.id_reportes == report.id_reportes).First();
+            reporte.dia = report.dia;
+            reporte.descripcion = report.descripcion;
+            reporte.dosto = report.dosto;
+            conexionDB.SaveChanges();
+            return RedirectToAction("Reportes");
+        }
+        public ActionResult EditModalReport(string id)
+        {
+            int id_report = Convert.ToInt32(id);
+            var report = conexionDB.reportes.Where(o => o.id_reportes == id_report).FirstOrDefault();
+            string month, day;
+            if (report.dia.Month.ToString().Length == 1)
+            {
+                month = '0' + report.dia.Month.ToString();
+            }
+            else
+            {
+                month = report.dia.Month.ToString();
+            }
+            if (report.dia.Day.ToString().Length == 1)
+            {
+                day = '0' + report.dia.Day.ToString();
+            }
+            else
+            {
+                day = report.dia.Day.ToString();
+            }
+            ViewData["date"] = report.dia.Year.ToString() + '-' + month + '-' + day;
+            return View(report);
+        }
+
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
