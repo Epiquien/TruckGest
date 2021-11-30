@@ -11,19 +11,27 @@ namespace TruckGest.Controllers
     public class AdministradorController : Controller
     {
         private TransportesContext conexionDB;
+        private gesTruckEntities2 conexionDB2;
         public AdministradorController()
         {
             conexionDB = new TransportesContext();
+            conexionDB2 = new gesTruckEntities2();
         }
 
         #region rutas principales
         [Authorize]
         public ActionResult Index()
         {
-            if(Session["TypeUser"].ToString() != "1")
-            {
-                return RedirectToAction("LogOff");
-            }
+                if (Session["TypeUser"].ToString() != "1")
+                {
+                    return RedirectToAction("LogOff");
+                }
+                
+            var dateNow = DateTime.Now;
+            ViewData["reportsToDay"] = conexionDB2.getNReportsOfDay().FirstOrDefault().ToString();
+            ViewData["spendToDay"] = conexionDB2.getSpendOfReportToDay().FirstOrDefault().ToString();
+            ViewData["carrosOperativos"] = conexionDB2.getCarroOperativos().FirstOrDefault().ToString();
+            ViewData["carrosInoperativos"] = conexionDB2.getCarroInoperativos().FirstOrDefault().ToString();
             return View();
         }
 
@@ -54,7 +62,7 @@ namespace TruckGest.Controllers
             {
                 return RedirectToAction("LogOff");
             }
-            return View(conexionDB.reportes.Include(o=>o.conductor).ToList());
+            return View(conexionDB.reportes.Include(o => o.conductor).ToList());
         }
         #endregion
 
@@ -141,7 +149,7 @@ namespace TruckGest.Controllers
             ViewBag.carTypes = carTypes;
             ViewBag.listConductores = conexionDB.conductores.ToList();
             var carro = conexionDB.carros.Where(o => o.id_carro == idC).Include(o => o.conductor).FirstOrDefault();
-            string month,day;
+            string month, day;
             if (carro.soatFechaVencimiento.Value.Month.ToString().Length == 1)
             {
                 month = '0' + carro.soatFechaVencimiento.Value.Month.ToString();
@@ -158,7 +166,7 @@ namespace TruckGest.Controllers
             {
                 day = carro.soatFechaVencimiento.Value.Day.ToString();
             }
-            ViewData["date"] = carro.soatFechaVencimiento.Value.Year.ToString()+'-'+month+'-'+day;
+            ViewData["date"] = carro.soatFechaVencimiento.Value.Year.ToString() + '-' + month + '-' + day;
             return View(carro);
         }
         public ActionResult reportDeleted(string id_reportes)

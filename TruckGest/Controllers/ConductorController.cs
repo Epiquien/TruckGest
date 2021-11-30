@@ -13,9 +13,11 @@ namespace TruckGest.Controllers
     public class ConductorController : Controller
     {
         private TransportesContext conexionDB;
+        private gesTruckEntities2 conexionDB2;
         public ConductorController()
         {
             conexionDB = new TransportesContext();
+            conexionDB2 = new gesTruckEntities2();
         }
         [Authorize]
         public ActionResult Index()
@@ -24,6 +26,11 @@ namespace TruckGest.Controllers
             {
                 return RedirectToAction("LogOff");
             }
+            int id = Convert.ToInt32(Session["idConductor"].ToString());
+            ViewData["nReports"] = conexionDB2.nReportsConductor(id).FirstOrDefault().ToString();
+            ViewData["nReportsDay"] = conexionDB2.nReportToDay(id).FirstOrDefault().ToString();
+            ViewData["spendConductor"] = conexionDB2.getSpendConductor(id).FirstOrDefault().ToString();
+            ViewData["spendConductorToDay"] = conexionDB2.getSpendConductorToDay(id).FirstOrDefault().ToString();
             return View();
         }
         [Authorize]
