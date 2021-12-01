@@ -22,16 +22,27 @@ namespace TruckGest.Controllers
         [Authorize]
         public ActionResult Index()
         {
-                if (Session["TypeUser"].ToString() != "1")
-                {
-                    return RedirectToAction("LogOff");
-                }
-                
+            if (Session["TypeUser"].ToString() != "1")
+            {
+                return RedirectToAction("LogOff");
+            }
+
             var dateNow = DateTime.Now;
             ViewData["reportsToDay"] = conexionDB2.getNReportsOfDay().FirstOrDefault().ToString();
-            ViewData["spendToDay"] = conexionDB2.getSpendOfReportToDay().FirstOrDefault().ToString();
+            var a = conexionDB2.getSpendOfReportToDay().FirstOrDefault().ToString();
+            if (a == "")
+            {
+                ViewData["spendToDay"] = "0";
+            }
+            else
+            {
+                ViewData["spendToDay"] = a;
+            }
             ViewData["carrosOperativos"] = conexionDB2.getCarroOperativos().FirstOrDefault().ToString();
             ViewData["carrosInoperativos"] = conexionDB2.getCarroInoperativos().FirstOrDefault().ToString();
+            
+            ViewBag.reportListMonth = conexionDB2.getLisNreportsForMonth().FirstOrDefault();
+            ViewBag.spendForMonth = conexionDB2.getLisSpendForMonth().FirstOrDefault();
             return View();
         }
 

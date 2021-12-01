@@ -7,6 +7,8 @@
     <Schema Namespace="gesTruckModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="getCarroInoperativos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getCarroOperativos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getLisNreportsForMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getLisSpendForMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getNReportsOfDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getSpendConductor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -32,18 +34,48 @@
           <FunctionImport Name="getCarroOperativos" ReturnType="Collection(Int32)" />
           <FunctionImport Name="getCarroInoperativos" ReturnType="Collection(Int32)" />
           <FunctionImport Name="getSpendConductor" ReturnType="Collection(Double)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getSpendConductorToDay" ReturnType="Collection(Double)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="nReportsConductor" ReturnType="Collection(Int32)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="nReportToDay" ReturnType="Collection(Int32)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="getLisNreportsForMonth" ReturnType="Collection(gesTruckModel.getLisNreportsForMonth_Result)" />
+          <FunctionImport Name="getLisSpendForMonth" ReturnType="Collection(gesTruckModel.getLisSpendForMonth_Result)" />
         </EntityContainer>
+        <ComplexType Name="getLisNreportsForMonth_Result">
+          <Property Type="Int32" Name="enero" Nullable="true" />
+          <Property Type="Int32" Name="febrero" Nullable="true" />
+          <Property Type="Int32" Name="marzo" Nullable="true" />
+          <Property Type="Int32" Name="abril" Nullable="true" />
+          <Property Type="Int32" Name="mayo" Nullable="true" />
+          <Property Type="Int32" Name="junio" Nullable="true" />
+          <Property Type="Int32" Name="julio" Nullable="true" />
+          <Property Type="Int32" Name="agosto" Nullable="true" />
+          <Property Type="Int32" Name="septiembre" Nullable="true" />
+          <Property Type="Int32" Name="octubre" Nullable="true" />
+          <Property Type="Int32" Name="noviembre" Nullable="true" />
+          <Property Type="Int32" Name="diciembre" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getLisSpendForMonth_Result">
+          <Property Type="Double" Name="enero" Nullable="true" />
+          <Property Type="Double" Name="febrero" Nullable="true" />
+          <Property Type="Double" Name="marzo" Nullable="true" />
+          <Property Type="Double" Name="abril" Nullable="true" />
+          <Property Type="Double" Name="mayo" Nullable="true" />
+          <Property Type="Double" Name="junio" Nullable="true" />
+          <Property Type="Double" Name="julio" Nullable="true" />
+          <Property Type="Double" Name="agosto" Nullable="true" />
+          <Property Type="Double" Name="septiembre" Nullable="true" />
+          <Property Type="Double" Name="octubre" Nullable="true" />
+          <Property Type="Double" Name="noviembre" Nullable="true" />
+          <Property Type="Double" Name="diciembre" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -58,6 +90,42 @@
           <FunctionImportMapping FunctionImportName="getSpendConductorToDay" FunctionName="gesTruckModel.Store.getSpendConductorToDay" />
           <FunctionImportMapping FunctionImportName="nReportsConductor" FunctionName="gesTruckModel.Store.nReportsConductor" />
           <FunctionImportMapping FunctionImportName="nReportToDay" FunctionName="gesTruckModel.Store.nReportToDay" />
+          <FunctionImportMapping FunctionImportName="getLisNreportsForMonth" FunctionName="gesTruckModel.Store.getLisNreportsForMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gesTruckModel.getLisNreportsForMonth_Result">
+                <ScalarProperty Name="enero" ColumnName="enero" />
+                <ScalarProperty Name="febrero" ColumnName="febrero" />
+                <ScalarProperty Name="marzo" ColumnName="marzo" />
+                <ScalarProperty Name="abril" ColumnName="abril" />
+                <ScalarProperty Name="mayo" ColumnName="mayo" />
+                <ScalarProperty Name="junio" ColumnName="junio" />
+                <ScalarProperty Name="julio" ColumnName="julio" />
+                <ScalarProperty Name="agosto" ColumnName="agosto" />
+                <ScalarProperty Name="septiembre" ColumnName="septiembre" />
+                <ScalarProperty Name="octubre" ColumnName="octubre" />
+                <ScalarProperty Name="noviembre" ColumnName="noviembre" />
+                <ScalarProperty Name="diciembre" ColumnName="diciembre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLisSpendForMonth" FunctionName="gesTruckModel.Store.getLisSpendForMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gesTruckModel.getLisSpendForMonth_Result">
+                <ScalarProperty Name="enero" ColumnName="enero" />
+                <ScalarProperty Name="febrero" ColumnName="febrero" />
+                <ScalarProperty Name="marzo" ColumnName="marzo" />
+                <ScalarProperty Name="abril" ColumnName="abril" />
+                <ScalarProperty Name="mayo" ColumnName="mayo" />
+                <ScalarProperty Name="junio" ColumnName="junio" />
+                <ScalarProperty Name="julio" ColumnName="julio" />
+                <ScalarProperty Name="agosto" ColumnName="agosto" />
+                <ScalarProperty Name="septiembre" ColumnName="septiembre" />
+                <ScalarProperty Name="octubre" ColumnName="octubre" />
+                <ScalarProperty Name="noviembre" ColumnName="noviembre" />
+                <ScalarProperty Name="diciembre" ColumnName="diciembre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

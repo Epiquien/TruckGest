@@ -83,5 +83,15 @@ namespace TruckGest.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("nReportToDay", idParameter);
         }
+    
+        public virtual ObjectResult<getLisNreportsForMonth_Result> getLisNreportsForMonth()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLisNreportsForMonth_Result>("getLisNreportsForMonth");
+        }
+    
+        public virtual ObjectResult<getLisSpendForMonth_Result> getLisSpendForMonth()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLisSpendForMonth_Result>("getLisSpendForMonth");
+        }
     }
 }

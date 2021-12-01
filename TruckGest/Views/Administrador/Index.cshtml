@@ -318,14 +318,41 @@
                     <div class="card-header pb-0">
                         <h6>Pagos mensuales</h6>
                         <p class="text-sm">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% más</span> en 2021
+                            <!--<i class="fa fa-arrow-up text-success"></i>-->
+                            <span class="font-weight-bold"></span> en
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>
                         </p>
                     </div>
                     <div class="card-body p-3">
+                        <input type="hidden" value="@ViewBag.reportListMonth.enero" id="enero1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.febrero" id="febrero1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.marzo" id="marzo1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.abril" id="abril1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.mayo" id="mayo1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.junio" id="junio1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.julio" id="julio1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.agosto" id="agosto1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.septiembre" id="septiembre1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.octubre" id="octubre1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.noviembre" id="noviembre1" />
+                        <input type="hidden" value="@ViewBag.reportListMonth.diciembre" id="diciembre1" />
                         <div class="chart">
                             <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
                         </div>
+                        <input type="hidden" value="@ViewBag.spendForMonth.enero" id="enero2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.febrero" id="febrero2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.marzo" id="marzo2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.abril" id="abril2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.mayo" id="mayo2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.junio" id="junio2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.julio" id="julio2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.agosto" id="agosto2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.septiembre" id="septiembre2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.octubre" id="octubre2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.noviembre" id="noviembre2" />
+                        <input type="hidden" value="@ViewBag.spendForMonth.diciembre" id="diciembre2" />
                     </div>
                 </div>
             </div>
