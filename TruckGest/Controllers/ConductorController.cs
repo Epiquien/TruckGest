@@ -29,8 +29,25 @@ namespace TruckGest.Controllers
             int id = Convert.ToInt32(Session["idConductor"].ToString());
             ViewData["nReports"] = conexionDB2.nReportsConductor(id).FirstOrDefault().ToString();
             ViewData["nReportsDay"] = conexionDB2.nReportToDay(id).FirstOrDefault().ToString();
-            ViewData["spendConductor"] = conexionDB2.getSpendConductor(id).FirstOrDefault().ToString();
-            ViewData["spendConductorToDay"] = conexionDB2.getSpendConductorToDay(id).FirstOrDefault().ToString();
+            var a    = conexionDB2.getSpendConductorToDay(id).FirstOrDefault().ToString();
+            if (a == "")
+            {
+                ViewData["spendConductorToDay"] = "0";
+            }
+            else
+            {
+                ViewData["spendConductorToDay"] = a;
+            }
+            var b = conexionDB2.getSpendConductor(id).FirstOrDefault().ToString();
+            if (b == "")
+            {
+                ViewData["spendConductor"] = "0";
+            }
+            else
+            {
+                ViewData["spendConductor"] = b;
+            }
+            ViewBag.listReportForMonth = conexionDB2.getLisReportForConductorToMonthd(id).FirstOrDefault();
             return View();
         }
         [Authorize]
